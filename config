@@ -1,0 +1,12 @@
+Host t
+    User test
+    HostName test-db.cse.iitb.ac.in
+Host n
+    User nikhil
+    HostName 10.105.18.5
+Host v 
+    User anubhav
+    HostName 192.168.56.101
+Host acer 
+    User anubhav
+    HostName 192.168.0.101
