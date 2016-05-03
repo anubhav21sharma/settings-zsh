@@ -109,8 +109,6 @@ alias runMCF='g++ -c mcf.c output.c pbeampp.c pbla.c pflowup.c psimplex.c pstart
 function bldTVPlugin(){ (cd ~/git/translation-validation/bin && make -j8 all);}
 function runCBMC(){(cbmc $1 --function test_fun --unwind 5);}
 
-export http_proxy="http://143059004:brendon*@netmon.iitb.ac.in:80"
-export https_proxy="http://143059004:brendon*@netmon.iitb.ac.in:80"
 source /etc/zsh_command_not_found
 
 extract () {
