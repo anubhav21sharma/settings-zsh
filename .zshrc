@@ -61,7 +61,7 @@ plugins=(git dirhistory zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/home/anubhav/git/translation-validation/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -107,7 +107,8 @@ alias l='ls --color=auto'
 alias runMCF='g++ -c mcf.c output.c pbeampp.c pbla.c pflowup.c psimplex.c pstart.c readmin.c treeup.c -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO -Ofast        -DSPEC_CPU_LP64  -fplugin=../bin/tv_plugin.so'
 
 function bldTVPlugin(){ (cd ~/git/translation-validation/bin && make -j8 all);}
-function runCBMC(){(cbmc $1 --function test_fun --unwind 5);}
+function runCBMC(){(cbmc $1 --function test_fun --unwind 5 --unwinding-assertions);}
+function runCPA(){(/home/anubhav/cpa_checker/CPAchecker-1.6.1-unix/scripts/cpa.sh -preprocess -predicateAnalysis -entryfunction test_fun $1);}
 
 source /etc/zsh_command_not_found
 
@@ -137,6 +138,99 @@ function runInvGen(){
 	frontend -o $file.pl $file.c
 	invgen $file.pl	
 }
+
+function runSJENG(){
+	g++ -c attacks.c book.c draw.c ecache.c partner.c rcfile.c see.c ttable.c -DSPEC_CPU -DNDEBUG   -Ofast   -DSPEC_CPU_LP64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runMCF(){
+	g++ -c mcf.c output.c pbeampp.c pbla.c pflowup.c psimplex.c pstart.c readmin.c treeup.c -DSPEC_CPU -DNDEBUG  -DWANT_STDC_PROTO -Ofast        -DSPEC_CPU_LP64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runBZIP(){
+	g++ -c blocksort.c compress.c crctable.c huffman.c randtable.c spec.c -DSPEC_CPU -DNDEBUG -Ofast -DSPEC_CPU_LP64 -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runLQ(){
+	g++ -c complex.c expn.c oaddn.c omuln.c qec.c qft.c shor.c specrand.c version.c -DSPEC_CPU -DNDEBUG   -Ofast  -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runLBM(){
+	g++ -c main.c -DSPEC_CPU -DNDEBUG   -Ofast    -DSPEC_CPU_LP64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runHMMER(){
+	g++ -c a2m.c clustal.c dayhoff.c emulation.c fast_algorithms.c getopt.c iupac.c mathsupport.c phylip.c plan9.c rk.c seqencode.c sqerror.c squid.h sre_ctype.c sre_math.c sre_random.c types.c vectorops.c -I. -DSPEC_CPU -DNDEBUG   -Ofast   -DSPEC_CPU_LP64   -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runH264REF(){
+	g++ -c annexb.c biariencode.c context_ini.c loopFilter.c mb_access.c memalloc.c nal.c nalu.c nalucommon.c rdopt_coding_state.c rdpicdecision.c refbuf.c specrand.c vlc.c weighted_prediction.c -DSPEC_CPU -DNDEBUG   -Ofast   -DSPEC_CPU_LP64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runPERLBENCH(){
+	g++ -c attrs.c Base64.c deb.c DynaLoader.c globals.c Hostname.c IO.c locale.c Opcode.c pad.c perlapi.c perlmain.c poll.c pp_sort.c run.c specrand.c stdio.c taint.c -DSPEC_CPU -DNDEBUG -DPERL_CORE  -Ofast  -DSPEC_CPU_LP64 -DSPEC_CPU_LINUX_X64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runGCC(){
+	g++ -c asprintf.c hex.c obstack.c safe-ctype.c version.c -DSPEC_CPU -DNDEBUG -I. -Ofast  -DSPEC_CPU_LP64 -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runSPHINX3(){
+	g++ -c err.c specrand.c unlimit.c -DSPEC_CPU -DNDEBUG -I. -DSPEC_CPU -DHAVE_CONFIG_H -I. -Ilibutil   -Ofast  -DSPEC_CPU_LP64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+function runMILC(){
+	g++ -c addmat.c addvec.c byterevn.c check_unitarity.c clear_mat.c clearvec.c cmplx.c control.c d_plaq4.c f_meas.c gaugefix2.c gauge_info.c  gaussrand.c grsource_imp.c io_lat4.c io_nonansi.c layout_hyper.c l_su2_hit_n.c make_ahmat.c make_lattice.c m_amat_hwvec.c m_amatvec.c m_amv_4dir.c m_amv_4vec.c mat_invert.c m_mat_an.c m_mat_hwvec.c m_mat_na.c m_mat_nn.c m_matvec.c msq_su3vec.c m_su2_mat_vec_a.c m_su2_mat_vec_n.c path_product.c ploop3.c rand_ahmat.c ranmom.c ranstuff.c realtr.c rephase.c reunitarize2.c r_su2_hit_a.c s_m_a_mat.c s_m_a_vec.c s_m_mat.c s_m_s_mat.c s_m_vec.c su3_adjoint.c su3_dot.c su3mat_copy.c su3_proj.c su3_rdot.c sub4vecs.c submat.c subvec.c trace_su3.c uncmp_ahmat.c update.c update_h.c update_u.c -DSPEC_CPU -DNDEBUG -I. -DFN -DFAST -DCONGRAD_TMP_VECTORS -DDSLASH_TMP_LINKS  -Ofast   -DSPEC_CPU_LP64  -fplugin=../../bin/tv_plugin.so |& tee result
+}
+
+alias runQuick='g++ -g3 -fPIC -O3  -fplugin=/home/anubhav/git/translation-validation/bin/tv_plugin.so -c /home/anubhav/git/translation-validation/test_cases/quick_test/quick_test.c -o quick_test.o -fdump-tree-all -lz3'
+
+#function runbench(){
+#        if [ "$1" == "bzip" ]
+#        then
+#        	runBZIP()
+#	elif [ "$1" == "libquantum" ]
+#        then
+#                runLQ()
+#        elif [ "$1" == "milc" ]
+#        then
+#                runMILC()
+#        elif [ "$1" == "mcf" ]
+#        then
+#                runMCF()
+#        elif [ "$1" == "hmmer" ]
+#        then
+#                runHMMER()
+#        else
+#                echo $"Usage: $0 {bzip|libquantum|milc|mcf|hmmer}"
+#        fi
+#}
+
+alias outClip='xclip -o -sel clip'
+
+function inClip(){
+	xclip -sel clip < $1
+}
 export YAAFE_PATH=/usr/local/yaafe_extensions/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 export PATH=/home/anubhav/workspace/PMU_Counters/:$PATH
+alias _p='cd /mnt/Data1/Placement/'
+export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+
+export COLOR_NC='\e[0m' # No Color
+export COLOR_WHITE='\e[1;37m'
+export COLOR_BLACK='\e[0;30m'
+export COLOR_BLUE='\e[0;34m'
+export COLOR_LIGHT_BLUE='\e[1;34m'
+export COLOR_GREEN='\e[0;32m'
+export COLOR_LIGHT_GREEN='\e[1;32m'
+export COLOR_CYAN='\e[0;36m'
+export COLOR_LIGHT_CYAN='\e[1;36m'
+export COLOR_RED='\e[0;31m'
+export COLOR_LIGHT_RED='\e[1;31m'
+export COLOR_PURPLE='\e[0;35m'
+export COLOR_LIGHT_PURPLE='\e[1;35m'
+export COLOR_BROWN='\e[0;33m'
+export COLOR_YELLOW='\e[1;33m'
+export COLOR_GRAY='\e[0;30m'
+export COLOR_LIGHT_GRAY='\e[0;37m'
