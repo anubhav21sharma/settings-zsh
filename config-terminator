@@ -1,34 +1,72 @@
 [global_config]
-  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
-  title_transmit_bg_color = "#ff3128"
+  title_transmit_bg_color = "#282a2e"
+  title_inactive_fg_color = "#c5c8c6"
+  title_transmit_fg_color = "#c5c8c6"
+  title_inactive_bg_color = "#373b41"
 [keybindings]
 [profiles]
-  [[home]]
-    palette = "#1c1b19:#ff3128:#519f50:#fbb829:#5573a3:#e02c6d:#1693a5:#918175:#2d2b28:#da4939:#98bc37:#ffc66d:#6d9cbe:#e35682:#34beda:#fce8c3"
-    font = Monospace 16
-    background_color = "#262626"
-    use_system_font = False
-    foreground_color = "#f5f5f5"
-    scrollback_infinite = True
   [[default]]
-    palette = "#000000:#cd0000:#00cd00:#cdcd00:#1e90ff:#cd00cd:#00cdcd:#e5e5e5:#4c4c4c:#ff0000:#00ff00:#ffff00:#4682b4:#ff00ff:#00ffff:#ffffff"
+    palette = "#282a2e:#a54242:#8c9440:#de935f:#5f819d:#85678f:#5e8d87:#707880:#373b41:#cc6666:#b5bd68:#f0c674:#81a2be:#b294bb:#8abeb7:#c5c8c6"
     background_image = None
     use_system_font = False
-    foreground_color = "#000000"
-    font = Monospace 16
-    background_color = "#ffffff"
-    scrollback_infinite = True
+    cursor_color = "#c5c8c6"
+    foreground_color = "#c5c8c6"
+    font = Ubuntu Mono 14
+    background_color = "#1d1f21"
+  [[light]]
+    palette = "#c5c1b4:#e75c58:#00a250:#a08a00:#208ffb:#d160c4:#00a4c1:#3e424d:#a1a6b2:#b22b31:#007427:#715f00:#0065ca:#a03196:#007693:#282c36"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#6d727e"
+    foreground_color = "#6d727e"
+    font = Ubuntu Mono 14
+    background_color = "#fef9ec"
+  [[gotham]]
+    palette = "#0a0f14:#c33027:#26a98b:#edb54b:#195465:#4e5165:#33859d:#98d1ce:#10151b:#d26939:#26a98b:#245361:#093748:#888ba5:#599caa:#d3ebe9"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#98d1ce"
+    foreground_color = "#98d1ce"
+    font = Ubuntu Mono 14
+    background_color = "#001428"
+  [[wood]]
+    palette = "#4a3637:#d17b49:#7b8748:#af865a:#535c5c:#775759:#6d715e:#c0b18b:#4a3637:#d17b49:#7b8748:#af865a:#535c5c:#775759:#6d715e:#c0b18b"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#c0b18b"
+    foreground_color = "#c0b18b"
+    font = Ubuntu Mono 14
+    background_color = "#1f1f1f"
+  [[black]]
+    palette = "#000000:#571dc2:#14db49:#403d70:#385a70:#384894:#4f3a5e:#999999:#38372c:#7c54b0:#a2e655:#9c6f59:#323f5c:#5e6c99:#667d77:#ffffff"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#ffffff"
+    foreground_color = "#ffffff"
+    font = Ubuntu Mono 14
+  [[forest]]
+    palette = "#131513:#e6193c:#29a329:#c3c322:#3d62f5:#ad2bee:#1999b3:#8ca68c:#687d68:#e6193c:#29a329:#c3c322:#3d62f5:#ad2bee:#1999b3:#f0fff0"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#8ca68c"
+    foreground_color = "#8ca68c"
+    font = Ubuntu Mono 14
+    background_color = "#131513"
+  [[hund]]
+    palette = "#222222:#e84f4f:#b7ce42:#fea63c:#66aabb:#b7416e:#6d878d:#dddddd:#666666:#d23d3d:#bde077:#ffe863:#aaccbb:#e16a98:#42717b:#cccccc"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#ffffff"
+    foreground_color = "#ffffff"
+    font = Ubuntu Mono 14
+    background_color = "#161616"
 [layouts]
   [[default]]
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
     [[[window0]]]
       type = Window
       parent = ""
 [plugins]
-  [[CustomCommandsMenu]]
-    [[[Last]]]
-      command = !!
-      enabled = True
-      name = Last
